@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İYTE Mezunlar Günü 2026 — Etkinlikler | Dünya İYTE'li Olsun</title>
+  <meta name="description" content="18 Ekim İYTE Mezunlar Günü kapsamında dünyanın birçok şehrinde buluşuyoruz. Şehir, mekân ve iletişim bilgileri." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.70);
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.12);
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #4A0D0D;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    /* ── Top bar ── */
+    .topbar {
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2E0909;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .topbar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .topbar a:hover { color: var(--white); }
+    .topbar a svg { width: 15px; height: 15px; }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.75rem 1.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 35%, #A52020 0%, #6B1212 55%, #4A0D0D 100%);
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .eyebrow {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: clamp(0.7rem, 2.2vw, 0.82rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 7vw, 3.4rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+
+    .hero .tagline {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+      color: var(--text-muted);
+      margin-top: 0.9rem;
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+
+    .date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 1.6rem;
+      padding: 0.6rem 1.3rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 100px;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+    .date-badge svg { width: 16px; height: 16px; }
+
+    /* ── Poster ── */
+    .poster-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0 1.5rem 2.5rem;
+      background: linear-gradient(#4A0D0D, #2E0909);
+    }
+
+    .poster-wrap img {
+      max-width: 520px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── Sections ── */
+    .section {
+      background: #2E0909;
+      padding: 2.5rem 1.5rem;
+    }
+    .section:nth-of-type(even) { background: #260808; }
+
+    .section-inner { max-width: 960px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: clamp(0.78rem, 2vw, 0.92rem);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-sub {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      margin-bottom: 1.9rem;
+    }
+
+    /* ── Flagship card (İzmir) ── */
+    .flagship {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(165,32,32,0.35), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 14px;
+      padding: 1.9rem 1.8rem;
+      text-align: center;
+    }
+    .flagship .flag-pin {
+      width: 34px; height: 34px; margin: 0 auto 0.8rem;
+      opacity: 0.95;
+    }
+    .flagship h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .flagship .country {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+    .flagship .flag-note {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.98rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .flagship .flag-meta {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .flagship .maps-link { margin-top: 1.2rem; }
+
+    /* ── Card grids ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .grid.compact {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.4rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.15s, background 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    .card .city {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .card .country {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.3rem;
+    }
+
+    .card .meta {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      margin-top: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .meta-row strong { color: var(--white); font-weight: 600; }
+    .meta-row svg {
+      width: 15px; height: 15px; flex-shrink: 0;
+      margin-top: 2px; opacity: 0.65;
+    }
+    .meta-row a { color: var(--text-muted); text-decoration: none; }
+    .meta-row a:hover { color: var(--white); }
+
+    .maps-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.1rem;
+      align-self: flex-start;
+      padding: 0.55rem 1.05rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 4px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .maps-link:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+    .maps-link svg { width: 15px; height: 15px; }
+
+    /* Compact card */
+    .card.mini { padding: 1.1rem 1.2rem; }
+    .card.mini .city { font-size: 1.15rem; }
+    .card.mini .tag {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.7rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Footer CTA ── */
+    .cta-foot {
+      background: #220707;
+      text-align: center;
+      padding: 2.8rem 1.5rem;
+    }
+    .cta-foot p {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.3rem;
+      line-height: 1.6;
+    }
+    .cta-foot a.insta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      border-radius: 2px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cta-foot a.insta:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .cta-foot a.insta svg { width: 18px; height: 18px; }
+
+    .footer {
+      background: #1C0606;
+      padding: 1.4rem;
+      text-align: center;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 0.73rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.22);
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top bar ── -->
+  <nav class="topbar">
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Ana sayfaya dön
+    </a>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="eyebrow">İYTE Mezunlar Günü · 2026</div>
+    <h1>İYTEdaşlar, buluşuyoruz!</h1>
+    <p class="tagline">Aynı ruh, farklı şehirler.</p>
+    <div class="date-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      18 Ekim Pazar · dünya genelinde
+    </div>
+  </header>
+
+  <!-- ── Poster ── -->
+  <div class="poster-wrap">
+    <img src="afis.png"
+         alt="İYTEdaşlar buluşuyoruz — İYTE Mezunlar Günü 2026 afişi" />
+  </div>
+
+  <!-- ── Flagship: İzmir ── -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Ana Buluşma</h2>
+      <p class="section-sub">İYTE Mezunlar Günü, yuvada başlıyor.</p>
+
+      <div class="flagship">
+        <svg class="flag-pin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <div class="country">Türkiye</div>
+        <h3>İzmir</h3>
+        <p class="flag-note"><strong>İYTE Mezunlar Günü</strong></p>
+        <p class="flag-meta">İYTE Yerleşkesi</p>
+        <a class="maps-link" target="_blank" rel="noopener noreferrer"
+           href="https://www.google.com/maps/search/?api=1&query=%C4%B0zmir%20Y%C3%BCksek%20Teknoloji%20Enstit%C3%BCs%C3%BC">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Haritada aç
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detailed meetups ── -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Kesinleşen Buluşmalar</h2>
+      <p class="section-sub">Mekân, saat ve iletişim bilgileri belli olan şehirler.</p>
+      <div class="grid" id="detailed-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Other cities ── -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Diğer Şehirler</h2>
+      <p class="section-sub">Mekân ve saat bilgileri yakında paylaşılacak. Takipte kalın!</p>
+      <div class="grid compact" id="other-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Footer CTA ── -->
+  <section class="cta-foot">
+    <p>Şehrin listede yok mu, yoksa bir buluşma mı başlatmak istersin?<br />Bize Instagram'dan ulaş.</p>
+    <a class="insta" href="https://www.instagram.com/dunyaiyteliolsun" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.01" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Instagram'da takip et
+    </a>
+  </section>
+
+  <footer class="footer">
+    &copy; 2024–2026 Dünya İYTE'li Olsun
+  </footer>
+
+  <script>
+    /* Varsayılan tarih 18 Ekim Pazar; aksi belirtilmedikçe. */
+    const DETAILED = [
+      { country: 'Almanya', city: 'Berlin',    time: '12:30', venue: 'Café am Neuen See',
+        contact: { name: 'Zeynep' },
+        maps: 'Café am Neuen See Berlin' },
+      { country: 'Almanya', city: 'Frankfurt', time: '11:00', venue: 'Milando Food',
+        contact: { name: 'Görkem' },
+        maps: 'Milando Food Frankfurt' },
+      { country: 'Almanya', city: 'Hamburg',   time: '10:30', venue: 'Café Klein',
+        address: 'Mönckebergstraße 7, 20095',
+        contact: { name: 'Burak' },
+        maps: 'Café Klein Mönckebergstraße 7 20095 Hamburg' },
+      { country: 'Almanya', city: 'Köln',      time: '11:00', venue: 'BOAZ EAT & CHILL',
+        address: 'Hugo-Eckener-Straße 35, 50829',
+        contact: { name: 'Merve' },
+        maps: 'BOAZ EAT & CHILL Hugo-Eckener-Straße 35 50829 Köln' },
+      { country: 'Almanya', city: 'Münih',     time: '13:50', venue: "L'Osteria Leopold",
+        contact: { name: 'Esengül' },
+        maps: "L'Osteria München Leopoldstraße" },
+      { country: 'Almanya', city: 'Stuttgart', time: '12:30', venue: 'Wilma Wunder Stuttgart',
+        address: 'Rotebühlplatz 21, 70178',
+        contact: { name: 'Özgür' },
+        maps: 'Wilma Wunder Rotebühlplatz 21 70178 Stuttgart' },
+      { country: 'İspanya', city: 'Madrid', venue: 'Restaurante Mavera',
+        address: 'C. de Sor Ángela de la Cruz 37, Tetuán, 28020 Madrid',
+        mapsUrl: 'https://www.google.com/maps?q=Restaurante+Mavera,+C.+de+Sor+%C3%81ngela+de+la+Cruz,+37,+Tetu%C3%A1n,+28020+Madrid&ftid=0xd4229ec163e4933:0x824a0da82a5ceb43' },
+      { country: 'İspanya', city: 'Barcelona', time: '14:00', venue: 'Zenith Cafe',
+        maps: 'Zenith Cafe Barcelona' },
+      { country: 'Finlandiya', city: 'Helsinki', time: '15:00', venue: 'Fazer Café Kluuvikatu',
+        address: 'Kluuvikatu 3, 00100 Helsinki',
+        mapsUrl: 'https://www.google.com/maps/place/Fazer+Caf%C3%A9+Kluuvikatu,+Kluuvikatu+3,+00100+Helsinki/data=!4m2!3m1!1s0x46920bce92f7f08b:0xc84e0004f019a04d' },
+      { country: 'Azerbaycan', city: 'Bakü', time: '12:00', venue: 'Şüşəbənd',
+        mapsUrl: 'https://maps.app.goo.gl/2NPkRM3qE7cA12Vy8?g_st=ic' },
+      { country: 'İsveç', city: 'Stockholm', time: '14:00', venue: 'LYKKE NYTORGET',
+        address: 'Nytorgsgatan 38, 116 40 Stockholm',
+        mapsUrl: 'https://www.google.com/maps?q=LYKKE+NYTORGET,+Nytorgsgatan+38,+116+40+Stockholm,+Sweden&ftid=0x465f77b848fc5a63:0xeaf5b7565c755239' },
+      { country: 'Hollanda', city: 'Amsterdam', time: '10:00', venue: 'Sortie Cafe & Restaurant',
+        mapsUrl: 'https://www.google.com/maps/place/Sortie+Cafe+%26+Restaurant/@52.3792173,4.8201818,611m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47c5e3561b88275b:0x65fda863b0c80a50!8m2!3d52.3792141!4d4.8227567!16s%2Fg%2F11jvl6v3tn' },
+      { country: 'Avusturya', city: 'Viyana', venue: 'BABA Döner',
+        address: 'Viktor-Adler-Platz 11, 1100 Wien',
+        mapsUrl: 'https://maps.app.goo.gl/SYjygBd5gSjRwzXBA' },
+      { country: 'Singapur', city: 'Singapur', time: '12:00', venue: 'Yugoslavia Bakery & Cafe @ Citylink',
+        maps: 'Yugoslavia Bakery & Cafe Citylink Mall Singapore' },
+    ];
+
+    const OTHER = [
+      { country: 'Belçika',     city: 'Ghent', tag: '24 Ekim' },
+      { country: 'B.A.E.',      city: 'Dubai' },
+      { country: 'Portekiz',    city: 'Lizbon' },
+      { country: 'Lüksemburg',  city: 'Lüksemburg' },
+      { country: 'Polonya',     city: 'Krakow' },
+    ];
+
+    const ICONS = {
+      clock: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+      pin:   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+      user:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+    };
+
+    const mapsUrl = (q) =>
+      'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+
+    function renderDetailed() {
+      const el = document.getElementById('detailed-grid');
+      el.innerHTML = DETAILED.slice()
+        .sort((a, b) => a.city.localeCompare(b.city, 'tr'))
+        .map(e => `
+        <article class="card">
+          <div class="city">${e.city}</div>
+          <div class="country">${e.country}</div>
+          <div class="meta">
+            ${e.time ? `<div class="meta-row">${ICONS.clock}<span><strong>${e.time}</strong></span></div>` : ''}
+            <div class="meta-row">${ICONS.pin}<span><strong>${e.venue}</strong>${e.address ? '<br>' + e.address : ''}</span></div>
+            ${e.contact ? `<div class="meta-row">${ICONS.user}<span>İletişim: ${e.contact.name}</span></div>` : ''}
+          </div>
+          <a class="maps-link" target="_blank" rel="noopener noreferrer" href="${e.mapsUrl || mapsUrl(e.maps)}">
+            ${ICONS.pin} Haritada aç
+          </a>
+        </article>
+      `).join('');
+    }
+
+    function renderOther() {
+      const el = document.getElementById('other-grid');
+      el.innerHTML = OTHER.slice()
+        .sort((a, b) => a.city.localeCompare(b.city, 'tr'))
+        .map(e => `
+        <article class="card mini">
+          <div class="city">${e.city}</div>
+          <div class="country">${e.country}</div>
+          ${e.tag ? `<div class="tag">${e.tag}</div>` : ''}
+        </article>
+      `).join('');
+    }
+
+    renderDetailed();
+    renderOther();
+  </script>
+
+</body>
+</html>
